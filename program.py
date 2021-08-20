@@ -45,7 +45,8 @@ def waittime_sea():
 
     temp_list = list(zip(attraction, wait_time))
     for i, _ in enumerate(temp_list):
-        return (temp_list[i][0], temp_list[i][1])
+        a = (temp_list[i][0], temp_list[i][1])
+        return a
 
 
 
