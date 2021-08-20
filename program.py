@@ -48,9 +48,6 @@ def waittime_sea():
     line = '\n'.join(arr)
     return line
 
-temp_list = list(zip(attraction, wait_time))
-for i, _ in enumerate(temp_list):
-    print(temp_list[i][0], temp_list[i][1])
 
 
 
