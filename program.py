@@ -43,18 +43,19 @@ def waittime_sea():
 
         wait_time.append(wait_time_treat)
 
-    #temp_list = list(zip(attraction, wait_time))
-    #arr = [str(i) for i in temp_list]
-    #line = '\n'.join(arr)
-    #return line
-
     temp_list = list(zip(attraction, wait_time))
     s = ''
     for i, _ in enumerate(temp_list):
         tup1 = (temp_list[i][0], temp_list[i][1])
-        str = ''.join(tup1)
-    return str
+        line = ''.join(tup1)
+        s += line
+    return s
 
+
+    #temp_list = list(zip(attraction, wait_time))
+    #arr = [str(i) for i in temp_list]
+    #line = '\n'.join(arr)
+    #return line
 
 
 
