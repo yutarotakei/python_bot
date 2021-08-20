@@ -13,6 +13,7 @@ from linebot.models import (
 import os
 import requests
 from bs4 import BeautifulSoup
+import jaconv
 
 app = Flask(__name__)
 
@@ -24,6 +25,8 @@ handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 
 def waittime_sea(word):
+    word = jaconv.hira2kata(word)
+
     url = 'https://tokyodisneyresort.info/realtime.php?park=sea'
     res = requests.get(url)
     soup = BeautifulSoup(res.text, "html.parser")
