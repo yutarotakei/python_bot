@@ -46,7 +46,7 @@ def waittime_sea():
             'attraction': attraction[i],
             'wait_time': wait_time[i],
         })
-    return 'a'
+    return ','.join(map(str, temp_list))
 
 
 @app.route("/")
