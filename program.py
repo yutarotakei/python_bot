@@ -43,10 +43,10 @@ def waittime_sea():
 
         wait_time.append(wait_time_treat)
 
-    temp_list = []
-    for i, _ in enumerate(attraction):
-        temp_list.append({attraction[i]: wait_time[i]})
+    temp_list = list(zip(attraction, wait_time))
     return '\n'.join(map(str, temp_list))
+
+
 
 
 @app.route("/")
