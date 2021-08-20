@@ -19,7 +19,6 @@ app = Flask(__name__)
 YOUR_CHANNEL_ACCESS_TOKEN = 'YEPHlreofhkVJBUR4qDa8eHD0HNUD7wJnDU/sfLz4QMrmeBwQqWZQuaHYOmttEMDSXr8Eh9zbu9hPu+gUFmON4VwIDPnW0htxVEAQq1zAiHvdzMObvIz+j7Izt+SJzx+xguQuKZ3bUdyarywkcQFLgdB04t89/1O/w1cDnyilFU='
 YOUR_CHANNEL_SECRET = '757702293991cb4716b5008469b54707'
 
-
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
@@ -47,9 +46,7 @@ def waittime_sea():
             'attraction': attraction[i],
             'wait_time': wait_time[i],
         })
-    return temp_list
-
-
+    return 'a'
 
 
 @app.route("/")
@@ -78,7 +75,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if event.message.text =='あ':
+    if event.message.text == 'あ':
         line = waittime_sea()
         line_bot_api.reply_message(
             event.reply_token,
@@ -93,7 +90,6 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=event.message.text))
-
 
 
 if __name__ == "__main__":
