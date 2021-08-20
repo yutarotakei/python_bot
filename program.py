@@ -38,8 +38,8 @@ def waittime_sea():
         if wait_time_treat.isdecimal():
             wait_time_treat += "分"
 
-        if "案内終了" in wait_time_temp:
-            wait_time_temp = '案内終了'
+        if "案内終了" in wait_time_treat:
+            wait_time_treat = '案内終了'
 
         wait_time.append(wait_time_treat)
 
