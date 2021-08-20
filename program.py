@@ -82,7 +82,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if len(event.message.text) == 1:
-        line = waittime_sea(event.message.text)
+        word = event.message.text
+        line = waittime_sea(word)
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=line))
