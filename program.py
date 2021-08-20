@@ -101,6 +101,11 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text='モビリ!'))
 
+    elif event.message.text == 'なにしてるんですか':
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='夢のカケラ拾ってるんです！'))
+
 
 
 
