@@ -23,7 +23,7 @@ line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 
-def waittime_sea():
+def waittime_sea(word):
     url = 'https://tokyodisneyresort.info/realtime.php?park=sea'
     res = requests.get(url)
     soup = BeautifulSoup(res.text, "html.parser")
@@ -49,14 +49,9 @@ def waittime_sea():
         tup1 = (temp_list[i][0], temp_list[i][1])
         line = ':'.join(tup1)
         line += '\n'
-        s += line
-    return s
-
-
-    #temp_list = list(zip(attraction, wait_time))
-    #arr = [str(i) for i in temp_list]
-    #line = '\n'.join(arr)
-    #return line
+        if line.startswith(word):
+            s += line
+        return s
 
 
 
@@ -86,21 +81,12 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if event.message.text == 'あ':
-        line = waittime_sea()
+    if len(event.message.text) == 1:
+        line = waittime_sea(event.message.text)
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=line))
 
-    elif event.message.text == '':
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=event.message.text))
-
-    else:
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=event.message.text))
 
 
 if __name__ == "__main__":
