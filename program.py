@@ -47,7 +47,8 @@ def waittime_sea():
     s = ''
     for i, _ in enumerate(temp_list):
         tup1 = (temp_list[i][0], temp_list[i][1])
-        line = ''.join(tup1)
+        line = '\s'.join(tup1)
+        line += '\n'
         s += line
     return s
 
