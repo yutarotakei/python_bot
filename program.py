@@ -54,7 +54,7 @@ def waittime_sea(word):
         line += '\n'
         if line.startswith(word):
             s += line
-    s += '\nʕ•́؈•̀ʔ🍯'
+    s += '\n🍯🍯🐝🍯'
     return s
 
 
