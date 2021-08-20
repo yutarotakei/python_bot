@@ -53,7 +53,7 @@ def waittime_sea():
     for i, _ in enumerate(temp_list):
         tup1 = (temp_list[i][0], temp_list[i][1])
         str = ''.join(tup1)
-        return str
+    return str
 
 
 
