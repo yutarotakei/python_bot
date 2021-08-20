@@ -35,6 +35,11 @@ def waittime_sea():
 
     for wait_time_temp in soup.find_all(class_="realtime-attr-condition"):
         wait_time_treat = wait_time_temp.text.split("分")[0].strip()
+        if wait_time_treat.isdecimal():
+            wait_time_treat += "分"
+
+        if "案内終了" in wait_time_temp:
+            wait_time_temp = '案内終了'
 
         wait_time.append(wait_time_treat)
 
