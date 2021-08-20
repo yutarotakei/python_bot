@@ -79,9 +79,10 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text =='あ':
+        line = waittime_sea()
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=waittime_sea()))
+            TextSendMessage(text=line))
 
     elif event.message.text == '':
         line_bot_api.reply_message(
