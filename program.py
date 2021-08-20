@@ -42,10 +42,7 @@ def waittime_sea():
 
     temp_list = []
     for i, _ in enumerate(attraction):
-        temp_list.append({
-            'attraction': attraction[i],
-            'wait_time': wait_time[i],
-        })
+        temp_list.append({attraction[i]: wait_time[i]})
     return ','.join(map(str, temp_list))
 
 
