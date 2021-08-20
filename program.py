@@ -38,7 +38,7 @@ def waittime_sea():
         if wait_time_treat.isdecimal():
             wait_time_treat += "分"
 
-        wait_time_treat('\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t')
+        wait_time_treat.strip('\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t')
 
         wait_time.append(wait_time_treat)
 
