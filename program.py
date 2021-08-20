@@ -54,7 +54,7 @@ def waittime_sea(word):
         line += '\n'
         if line.startswith(word):
             s += line
-    s += '\nscraped👍!'
+    s += '\nscraped now'
     return s
 
 
@@ -97,7 +97,7 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text='スミー助けてくれ-'))
 
-    elif event.message.text == 'モビリス!':
+    elif event.message.text == 'モビリス！':
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='モビリ!'))
