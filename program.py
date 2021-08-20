@@ -11,6 +11,8 @@ from linebot.models import (
 )
 
 import os
+import requests
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
@@ -20,6 +22,34 @@ YOUR_CHANNEL_SECRET = '757702293991cb4716b5008469b54707'
 
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
+
+
+def waittime_sea():
+    url = 'https://tokyodisneyresort.info/realtime.php?park=sea'
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text, "html.parser")
+
+    attraction = []
+    wait_time = []
+    for attraction_temp in soup.find_all(class_="realtime-attr-name"):
+        attraction.append(attraction_temp.text.strip())
+
+    for wait_time_temp in soup.find_all(class_="realtime-attr-condition"):
+        wait_time_treat = wait_time_temp.text.split("分")[0].strip()
+        if wait_time_treat.isdecimal():
+            wait_time_treat += "分"
+
+        wait_time.append(wait_time_treat)
+
+    temp_list = []
+    for i, _ in enumerate(attraction):
+        temp_list.append({
+            'attraction': attraction[i],
+            'wait_time': wait_time[i],
+        })
+    return temp_list
+
+
 
 
 @app.route("/")
@@ -48,9 +78,21 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text))
+    if event.message.text =='あ':
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=waittime_sea()))
+
+    elif event.message.text == '':
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=event.message.text))
+
+    else:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=event.message.text))
+
 
 
 if __name__ == "__main__":
