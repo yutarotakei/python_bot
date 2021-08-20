@@ -91,10 +91,10 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text=line))
 
-    else:
+    elif event.message.text == 'チクタク':
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=event.message.text))
+            TextSendMessage(text='スミー助けてくれぇ-'))
 
 
 
