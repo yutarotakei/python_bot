@@ -15,6 +15,7 @@ import requests
 from bs4 import BeautifulSoup
 import jaconv
 import datetime
+import time
 
 app = Flask(__name__)
 
@@ -93,11 +94,13 @@ def handle_message(event):
         current_time = datetime.datetime.now()
         if previous_time + interval < current_time:
             ar_time = datetime.datetime.now()
+            time.sleep(1)
             line = waittime_sea(word)
             line += 'loop(2)'
             inte = datetime.timedelta(seconds=10)
             nw_time = datetime.datetime.now()
             if ar_time + inte < nw_time:
+                time.sleep(1)
                 line = waittime_sea(word)
                 line += 'loop(3)'
 
