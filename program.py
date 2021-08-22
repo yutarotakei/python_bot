@@ -95,7 +95,7 @@ def handle_message(event):
             ar_time = datetime.datetime.now()
             line = waittime_sea(word)
             line += 'loop(2)'
-            inte = datetime.timedelta(seconds=2)
+            inte = datetime.timedelta(seconds=10)
             nw_time = datetime.datetime.now()
             if ar_time + inte < nw_time:
                 line = waittime_sea(word)
