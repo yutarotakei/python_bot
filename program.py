@@ -88,7 +88,7 @@ def handle_message(event):
         previous_time = datetime.datetime.now()
         word = event.message.text
         line = waittime_sea(word)
-        interval = datetime.timedelta(seconds=3)
+        interval = datetime.timedelta(seconds=1)
         current_time = datetime.datetime.now()
         if previous_time + interval > current_time:
             ar_time = datetime.datetime.now()
@@ -103,7 +103,7 @@ def handle_message(event):
     elif event.message.text == 'チクタク':
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text='スミー助けてくれ-'))
+            TextSendMessage(text='スミー助けてくれ'))
 
     elif event.message.text == 'モビリス！':
         line_bot_api.reply_message(
@@ -114,6 +114,11 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='夢のカケラ拾ってるんです！'))
+
+    elif event.message.text == 'フォースとともにあらんことを':
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='フォースとともにあらんことを'))
 
 
 if __name__ == "__main__":
