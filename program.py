@@ -14,6 +14,7 @@ import os
 import requests
 from bs4 import BeautifulSoup
 import jaconv
+import datetime
 
 app = Flask(__name__)
 
@@ -57,7 +58,6 @@ def waittime_sea(word):
     return s
 
 
-
 @app.route("/")
 def hello_world():
     return 'hello yutaro'
@@ -85,13 +85,22 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if len(event.message.text) == 1:
+        previous_time = datetime.datetime.now()
         word = event.message.text
         line = waittime_sea(word)
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=line))
+        interval = datetime.timedelta(seconds=3)
+        current_time = datetime.datetime.now()
+        if previous_time + interval > current_time:
+            ar_time = datetime.datetime.now()
+            line = waittime_sea(word)
+            inte = datetime.timedelta(seconds=1)
+            nw_time = datetime.datetime.now()
+            if ar_time + inte > nw_time:
+                line = waittime_sea(word)
 
-    elif event.message.text == 'チクタク':
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=line))
+
+elif event.message.text == 'チクタク':
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='スミー助けてくれ-'))
@@ -105,9 +114,6 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='夢のカケラ拾ってるんです！'))
-
-
-
 
 
 if __name__ == "__main__":
