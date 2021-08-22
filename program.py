@@ -94,11 +94,12 @@ def handle_message(event):
         if previous_time + interval < current_time:
             ar_time = datetime.datetime.now()
             line = waittime_sea(word)
-            inte = datetime.timedelta(seconds=1)
+            line += 'ab'
+            inte = datetime.timedelta(seconds=2)
             nw_time = datetime.datetime.now()
             if ar_time + inte < nw_time:
                 line = waittime_sea(word)
-                line += 'ab'
+                line += 'abc'
 
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=line))
 
