@@ -89,14 +89,14 @@ def handle_message(event):
         word = event.message.text
         line = waittime_sea(word)
         line += 'a'
-        interval = datetime.timedelta(seconds=3)
+        interval = datetime.timedelta(seconds=2)
         current_time = datetime.datetime.now()
-        if previous_time + interval > current_time:
+        if previous_time + interval < current_time:
             ar_time = datetime.datetime.now()
             line = waittime_sea(word)
             inte = datetime.timedelta(seconds=1)
             nw_time = datetime.datetime.now()
-            if ar_time + inte > nw_time:
+            if ar_time + inte < nw_time:
                 line = waittime_sea(word)
                 line += 'ab'
 
