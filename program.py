@@ -88,18 +88,18 @@ def handle_message(event):
         previous_time = datetime.datetime.now()
         word = event.message.text
         line = waittime_sea(word)
-        line += 'a'
+        line += 'loop(1)'
         interval = datetime.timedelta(seconds=2)
         current_time = datetime.datetime.now()
         if previous_time + interval < current_time:
             ar_time = datetime.datetime.now()
             line = waittime_sea(word)
-            line += 'ab'
+            line += 'loop(2)'
             inte = datetime.timedelta(seconds=2)
             nw_time = datetime.datetime.now()
             if ar_time + inte < nw_time:
                 line = waittime_sea(word)
-                line += 'abc'
+                line += 'loop(3)'
 
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=line))
 
