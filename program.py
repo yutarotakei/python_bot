@@ -89,7 +89,7 @@ def handle_message(event):
         word = event.message.text
         line = waittime_sea(word)
         line += 'a'
-        interval = datetime.timedelta(seconds=2)
+        interval = datetime.timedelta(seconds=3)
         current_time = datetime.datetime.now()
         if previous_time + interval > current_time:
             ar_time = datetime.datetime.now()
